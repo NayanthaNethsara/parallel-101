@@ -2,13 +2,20 @@
 #include <omp.h>
 
 int main() {
-    int sum = 0;
+    long long N = 1000000; // 1 million
+    long long sum = 0;
+    double start, end;
+
+    start = omp_get_wtime();
 
     #pragma omp parallel for
-    for (int i = 0; i < 100; i++) {
-        sum += i;  // race condition here
+    for (long long i = 0; i < N; i++) {
+        sum += i;
     }
 
-    printf("Sum = %d\n", sum);
+    end = omp_get_wtime();
+    printf("Sum = %lld\n", sum);
+    printf("Execution time: %f seconds\n", end - start);
+
     return 0;
 }
