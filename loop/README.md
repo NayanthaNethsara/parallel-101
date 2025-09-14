@@ -29,7 +29,7 @@ export OMP_NUM_THREADS=8
 
 ---
 
-## 🔎 Observed Output (with 8 threads)
+## Observed Output (with 8 threads)
 
 ### Results Comparison
 
