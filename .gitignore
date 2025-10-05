@@ -5,3 +5,8 @@
 
 *.exe
 *.out
+.DS_Store
+
+*.txt
+OpenMP/matrix/openmp_matmul
+MPI/matrix/mpi_matmul
