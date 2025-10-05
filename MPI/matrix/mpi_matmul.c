@@ -12,6 +12,7 @@ int main(int argc, char **argv){
     if(argc>1) N = atoi(argv[1]);
 
     int rows_per_proc = N / nproc;
+
     double *A = NULL;
     double *B = malloc(N*N*sizeof(double));
     double *C = NULL;
@@ -21,21 +22,20 @@ int main(int argc, char **argv){
         C = malloc(N*N*sizeof(double));
         for(int i=0;i<N;i++){
             for(int j=0;j<N;j++){
-                A[i*N+j] = i+j*0.5;
-                B[i*N+j] = i-j*0.5;
+                A[i*N + j] = i + j*0.5;
+                B[i*N + j] = i - j*0.5;
             }
         }
     }
 
     MPI_Bcast(B, N*N, MPI_DOUBLE, 0, MPI_COMM_WORLD);
 
-    double *A_local = malloc(rows_per_proc * N * sizeof(double));
-    double *C_local = malloc(rows_per_proc * N * sizeof(double));
+    double *A_local = malloc(rows_per_proc*N*sizeof(double));
+    double *C_local = malloc(rows_per_proc*N*sizeof(double));
 
     MPI_Scatter(A, rows_per_proc*N, MPI_DOUBLE,
                 A_local, rows_per_proc*N, MPI_DOUBLE, 0, MPI_COMM_WORLD);
 
-    // Start timing here (after scatter)
     double t0 = MPI_Wtime();
 
     for(int i=0;i<rows_per_proc;i++){
@@ -51,7 +51,7 @@ int main(int argc, char **argv){
     MPI_Gather(C_local, rows_per_proc*N, MPI_DOUBLE,
                C, rows_per_proc*N, MPI_DOUBLE, 0, MPI_COMM_WORLD);
 
-    double t1 = MPI_Wtime(); // after gather
+    double t1 = MPI_Wtime();
 
     if(rank==0){
         printf("MPI MatMul: N=%d Procs=%d Time=%f s Sample C[0][0]=%f\n",
