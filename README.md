@@ -22,7 +22,9 @@ Sequential processing takes too long, so we use **parallel computing**, which sp
 - **Gaming & Finance**: Real-time simulations, risk analysis, rendering 3D graphics—all happen in parallel
 - **Supercomputing tasks**: Climate models, physics simulations, genome sequencing
 
-> _"A NASA computer model simulates the astonishing track and forceful winds of Hurricane Sandy."_ - [NASA Scientific Visualization Studio](https://svs.gsfc.nasa.gov/11269/)
+![Hurricane Sandy — NASA Scientific Visualization Studio](https://svs.gsfc.nasa.gov/vis/a010000/a011200/a011269/hurricane_sandy_cover_1024.jpg)
+
+_Image: Hurricane Sandy visualization — [NASA Scientific Visualization Studio](https://svs.gsfc.nasa.gov/11269/)_
 
 ## The Tools We'll Explore
 
